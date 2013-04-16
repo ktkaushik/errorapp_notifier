@@ -10,7 +10,7 @@ module ErrorappNotifier
         uniqueness_hash = exception_data.uniqueness_hash
         hash_param = uniqueness_hash.nil? ? nil: "&hash=#{uniqueness_hash}"
         url = "/api/projects/#{::ErrorappNotifier::Config.api_key}/fails?protocol_version=#{::ErrorappNotifier::PROTOCOL_VERSION}#{hash_param}"
-        call_remote(url, data.to_json)
+        call_remote(url, exception_data.to_json)
       end
 
       def call_remote(url, data)
